@@ -2,9 +2,19 @@ const express = require('express');
 const { execFile } = require('child_process');
 const cors = require('cors');
 
+const fs = require('fs');
+const path = require('path');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Write cookies from env variable on startup
+const COOKIES_PATH = path.join(__dirname, 'cookies.txt');
+if (process.env.YT_COOKIES_B64) {
+  fs.writeFileSync(COOKIES_PATH, Buffer.from(process.env.YT_COOKIES_B64, 'base64').toString());
+  console.log('YouTube cookies loaded from environment');
+}
 
 app.get('/', (req, res) => {
   res.json({ status: 'ok', service: 'redline-api' });
@@ -21,7 +31,7 @@ app.post('/', (req, res) => {
   }
 
   // Get direct audio URL using yt-dlp
-  const cookiesPath = '/app/cookies.txt';
+  const cookiesPath = COOKIES_PATH;
   const args = [
     '--no-warnings',
     '--no-playlist',
