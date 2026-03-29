@@ -36,7 +36,7 @@ app.post('/', (req, res) => {
     '--no-warnings',
     '--no-playlist',
     '--cookies', cookiesPath,
-    '-f', 'bestaudio',
+    '-f', 'ba/b',
     '--get-url',
     '--get-filename',
     '-o', '%(title)s - %(uploader)s.%(ext)s',
