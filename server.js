@@ -21,9 +21,11 @@ app.post('/', (req, res) => {
   }
 
   // Get direct audio URL using yt-dlp
+  const cookiesPath = '/app/cookies.txt';
   const args = [
     '--no-warnings',
     '--no-playlist',
+    '--cookies', cookiesPath,
     '-f', 'bestaudio[ext=m4a]/bestaudio',
     '--get-url',
     '--get-filename',
