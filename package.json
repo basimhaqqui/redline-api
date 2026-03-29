@@ -1,0 +1,16 @@
+{
+  "name": "redline-api",
+  "version": "1.0.0",
+  "description": "yt-dlp backend for Redline Chrome extension",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
